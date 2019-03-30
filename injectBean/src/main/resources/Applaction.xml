@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:c="http://www.springframework.org/schema/c"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="car1" class="com.wangyu.domain.Car">
+        <constructor-arg name="color" type="java.lang.String" index="0" value="红色">
+        </constructor-arg>
+        <constructor-arg name="name" type="java.lang.String" index="1" value="宝马">
+        </constructor-arg>
+    </bean>
+
+    <bean name="man1" class="com.wangyu.domain.Man">
+        <property name="car" ref="car"></property>
+        <property name="name" value="王宇"></property>
+    </bean>
+
+    <bean id="car" class="com.wangyu.domain.Car" c:color="绿色" c:name="保时捷"/>
+
+    <bean id="man" class="com.wangyu.domain.Man" p:car-ref="car" p:name="王宇"/>
+
+    <!--<bean id="mycollection" class="com.wangyu.domain.MyCollection">-->
+        <!--<property name="list">-->
+            <!--<list>-->
+                <!--<value>2</value>-->
+                <!--<value>3</value>-->
+                <!--<value>4</value>-->
+            <!--</list>>-->
+        <!--</property>-->
+    <!--</bean>-->
+
+    <bean id="mycollection" class="com.wangyu.domain.MyCollection">
+        <property name="list">
+            <list>
+                <value>32</value>
+                <value>88</value>
+            </list>
+        </property>
+        <property name="map">
+            <map>
+                <entry key="1" value="小黑"></entry>
+                <entry key="2" value="小白"></entry>
+            </map>
+        </property>
+        <property name="properties">
+            <props>
+                <prop key="p1">小红</prop>
+                <prop key="p2">小绿</prop>
+            </props>
+        </property>
+        <!--空值的注入-->
+        <property name="man">
+            <null></null>
+        </property>
+
+    </bean>
+</beans>
